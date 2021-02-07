@@ -1,7 +1,7 @@
 buildscript{
     repositories {
         flatDir dirs: 'C:\\Users\\tsoum\\csci2020u\\proguard6.2.2\\lib'
-
+        jcenter()
     }
 
     dependencies {
@@ -12,6 +12,7 @@ buildscript{
 plugins {
     id 'java'
     id 'application'
+    id 'nebula.lint' version '16.17.0'
 }
 
 application {
