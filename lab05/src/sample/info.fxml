@@ -1,0 +1,41 @@
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane fx:controller="sample.StudentInfoController"
+            xmlns:fx="http://javafx.com/fxml">
+    <TableView fx:id="tabView" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+    AnchorPane.topAnchor = "0" AnchorPane.bottomAnchor="0">
+        <columns>
+            <TableColumn fx:id="sID" text="Student ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentID"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="midterm" text="Midterm">
+                <cellValueFactory>
+                    <PropertyValueFactory property="midtermGrade" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="assignment" text="Assignment">
+                <cellValueFactory>
+                    <PropertyValueFactory property="assignmentGrade" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="finalExam" text="Final Exam">
+                <cellValueFactory>
+                    <PropertyValueFactory property="finalExamGrade" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="finalMark" text="Final Mark">
+                <cellValueFactory>
+                    <PropertyValueFactory property="finalMarkGrade" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="letter" text="Letter Grade">
+                <cellValueFactory>
+                    <PropertyValueFactory property="letterGrade" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</AnchorPane>
