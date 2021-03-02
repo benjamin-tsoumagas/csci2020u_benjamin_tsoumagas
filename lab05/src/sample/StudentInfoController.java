@@ -2,12 +2,20 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class StudentInfoController {
+    public TextField studentID;
+    public TextField midtermGrade;
+    public TextField assignmentGrade;
+    public TextField finalExamGrade;
+    public Button button;
     @FXML
     private TableView<StudentRecord> tabView;
     @FXML
@@ -22,6 +30,20 @@ public class StudentInfoController {
     private TableColumn<Object, Object> finalMark;
     @FXML
     private TableColumn<Object, Object> letter;
+
+    @FXML
+    public void handleButtonAction(ActionEvent event) {
+        ObservableList<StudentRecord> marks = FXCollections.observableArrayList();
+        marks.add(new StudentRecord(
+                studentID.getText(),
+                Double.parseDouble(midtermGrade.getText()),
+                Double.parseDouble(assignmentGrade.getText()),
+                Double.parseDouble(finalExamGrade.getText())));
+        studentID.clear();
+        midtermGrade.clear();
+        assignmentGrade.clear();
+        finalExamGrade.clear();
+    }
 
     public static class StudentRecord {
         private final String studentID;

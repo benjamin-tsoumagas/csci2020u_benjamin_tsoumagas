@@ -1,41 +1,72 @@
-<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane fx:controller="sample.StudentInfoController"
-            xmlns:fx="http://javafx.com/fxml">
-    <TableView fx:id="tabView" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
-    AnchorPane.topAnchor = "0" AnchorPane.bottomAnchor="0">
-        <columns>
-            <TableColumn fx:id="sID" text="Student ID">
-                <cellValueFactory>
-                    <PropertyValueFactory property="studentID"/>
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="midterm" text="Midterm">
-                <cellValueFactory>
-                    <PropertyValueFactory property="midtermGrade" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="assignment" text="Assignment">
-                <cellValueFactory>
-                    <PropertyValueFactory property="assignmentGrade" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="finalExam" text="Final Exam">
-                <cellValueFactory>
-                    <PropertyValueFactory property="finalExamGrade" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="finalMark" text="Final Mark">
-                <cellValueFactory>
-                    <PropertyValueFactory property="finalMarkGrade" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="letter" text="Letter Grade">
-                <cellValueFactory>
-                    <PropertyValueFactory property="letterGrade" />
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
-    </TableView>
-</AnchorPane>
+<GridPane fx:controller="sample.StudentInfoController"
+          xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap = "10" vgap = "10">
+    <AnchorPane>
+        <TableView fx:id="tabView" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+        AnchorPane.topAnchor = "0" AnchorPane.bottomAnchor="0">
+            <columns>
+                <TableColumn fx:id="sID" text="Student ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="studentID"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="midterm" text="Midterm">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="midtermGrade" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="assignment" text="Assignment">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="assignmentGrade" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="finalExam" text="Final Exam">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="finalExamGrade" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="finalMark" text="Final Mark">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="finalMarkGrade" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="letter" text="Letter Grade">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="letterGrade" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </AnchorPane>
+
+    <Label text="SID"
+           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+    <TextField id="addStudentID" fx:id="studentID"
+               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+    <Label text="Midterm"
+           GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+    <TextField id="midtermGrade" fx:id="midtermGrade"
+               GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+
+    <Label text="Assignments"
+           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+
+    <TextField id="assignmentGrade" fx:id="assignmentGrade"
+               GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+
+    <Label text="Final"
+           GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+
+    <TextField id="finalExamGrade" fx:id="finalExamGrade"
+               GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+
+    <Button id="button"  text="Add"
+            onAction="#handleButtonAction" fx:id="button"
+            GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+
+</GridPane>
