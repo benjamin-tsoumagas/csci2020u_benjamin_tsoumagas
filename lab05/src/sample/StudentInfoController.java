@@ -32,9 +32,8 @@ public class StudentInfoController {
     private TableColumn<Object, Object> letter;
 
     @FXML
-    public void handleButtonAction(ActionEvent event) {
-        ObservableList<StudentRecord> marks = FXCollections.observableArrayList();
-        marks.add(new StudentRecord(
+    public void handleButtonAction(ActionEvent e) {
+        DataSource.getAllMarks().add(new StudentRecord(
                 studentID.getText(),
                 Double.parseDouble(midtermGrade.getText()),
                 Double.parseDouble(assignmentGrade.getText()),
