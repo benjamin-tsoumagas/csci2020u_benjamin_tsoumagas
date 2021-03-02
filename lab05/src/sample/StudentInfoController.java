@@ -2,7 +2,6 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -32,12 +31,14 @@ public class StudentInfoController {
     private TableColumn<Object, Object> letter;
 
     @FXML
-    public void handleButtonAction(ActionEvent e) {
-        DataSource.getAllMarks().add(new StudentRecord(
+    public void handleButtonAction() {
+        ObservableList<StudentRecord> newInfo = tabView.getItems();
+        newInfo.add(new StudentRecord(
                 studentID.getText(),
                 Double.parseDouble(midtermGrade.getText()),
                 Double.parseDouble(assignmentGrade.getText()),
                 Double.parseDouble(finalExamGrade.getText())));
+        tabView.setItems(newInfo);
         studentID.clear();
         midtermGrade.clear();
         assignmentGrade.clear();
