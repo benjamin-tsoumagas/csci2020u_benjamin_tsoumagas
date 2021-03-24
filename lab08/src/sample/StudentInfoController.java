@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
 
@@ -18,7 +20,7 @@ public class StudentInfoController {
     public TextField finalExamGrade;
     public Button button;
     @FXML
-    public TextArea txtContent;
+    private AnchorPane aPane;
     @FXML
     public MenuBar menuBar;
     @FXML
@@ -153,6 +155,41 @@ public class StudentInfoController {
         tabView.getItems().clear();
     }
 
+    @FXML
+    private void onOpenClick(ActionEvent e){
+        chooseFile();
+        load();
+    }
+
+    @FXML
+    private void onSaveClick(ActionEvent e){
+        save();
+    }
+
+    @FXML
+    private void onSaveAsClick(ActionEvent e){
+        chooseFile();
+        save();
+    }
+
+    @FXML
+    private void onExitClick(ActionEvent e){
+        Platform.exit();
+    }
+
+    @FXML
+    private void chooseFile(){
+        Stage stage = (Stage) aPane.getScene().getWindow();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("CSV Files", "*.csv"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+        currentFilename = fileChooser.showOpenDialog(stage);
+    }
+
     private void load(){
         ObservableList<StudentRecord> tabData = FXCollections.observableArrayList();
         try {
@@ -164,22 +201,12 @@ public class StudentInfoController {
 
                 StudentRecord record = new StudentRecord(fields[0], Double.parseDouble(fields[1]), Double.parseDouble(fields[2]),
                         Double.parseDouble(fields[3]));
+                tabData.add(record);
                 tabView.setItems(tabData);
-                }
-            } catch(Exception err){
+            }
+        } catch(Exception err){
             err.printStackTrace();
         }
-    }
-
-    @FXML
-    private void onOpenClick(ActionEvent e){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
-                new FileChooser.ExtensionFilter("All Files", "*.*"));
-        currentFilename = fileChooser.showOpenDialog(txtContent.getScene().getWindow());
-        load();
     }
 
     private void save(){
@@ -187,7 +214,7 @@ public class StudentInfoController {
         try{
             w = new BufferedWriter(new FileWriter(currentFilename));
             for (StudentRecord student: tabView.getItems()){
-                String line = student.getStudentID() + "," + student.getMidtermGrade() + "," + student.getAssignmentGrade() + "," + student.getFinalExamGrade() + ";";
+                String line = student.getStudentID() + "," + student.getMidtermGrade() + "," + student.getAssignmentGrade() + "," + student.getFinalExamGrade() + "\n";
                 w.write(line);
             }
         } catch(Exception err){
@@ -204,20 +231,6 @@ public class StudentInfoController {
             }
         }
     }
-
-    @FXML
-    private void onSaveClick(ActionEvent e){
-        save();
-    }
-
-    @FXML
-    private void onSaveAsClick(ActionEvent e){
-        save();
-
-    }
-
-    @FXML
-    private void onExitClick(ActionEvent e){
-        Platform.exit();
-    }
 }
+
+

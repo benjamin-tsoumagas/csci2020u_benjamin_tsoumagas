@@ -4,7 +4,7 @@
 
 <GridPane fx:controller="sample.StudentInfoController"
             xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="10" vgap="10">
-    <AnchorPane>
+    <AnchorPane fx:id="aPane">
         <MenuBar id="menuBar" fx:id="menuBar" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
             <Menu text = "File">
                 <MenuItem fx:id="mnuNew" text = "New" id="newBtn" onAction="#onNewClick"/>
@@ -14,9 +14,6 @@
                 <MenuItem fx:id="mnuExit" text = "Exit" id="exitBtn" onAction="#onExitClick"/>
             </Menu>
         </MenuBar>
-<!--        <TextArea fx:id="txtContent" AnchorPane.topAnchor="30" AnchorPane.rightAnchor="30" AnchorPane.leftAnchor="30" AnchorPane.bottomAnchor="30"-->
-<!--              style="fx-font-family: Consolas; -fx-font-size: 14pt">-->
-<!--        </TextArea>-->
         <TableView fx:id="tabView" AnchorPane.leftAnchor="67.5" AnchorPane.rightAnchor="67.5"
         AnchorPane.topAnchor = "25" AnchorPane.bottomAnchor="0">
             <columns>
@@ -53,7 +50,6 @@
             </columns>
         </TableView>
     </AnchorPane>
-
 
     <Label text="SID"
            GridPane.columnIndex="0" GridPane.rowIndex="1"/>

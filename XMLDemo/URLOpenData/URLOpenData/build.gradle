@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+
+   
+}
+
+task(run, dependsOn: 'classes', type: JavaExec) {
+   main = 'BikeShare'   
+
+   classpath = sourceSets.main.runtimeClasspath
+}
